@@ -1,11 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
-import Header from './components/layout/Header';
+import App from './App';
 
-reportWebVitals();
-
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  createRoot(rootElement).render(<Header />);
+const container = document.getElementById('root');
+if (container) {
+  const root = createRoot(container);
+  root.render(<App />);
 }
