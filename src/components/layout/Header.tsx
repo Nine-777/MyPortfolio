@@ -10,9 +10,12 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import styled from 'styled-components';
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Profile from './Profile';
+import Contact from './Contact';
+import Skill from './Skill';
 
 const pages = ['Profile', 'Skill', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -49,7 +52,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            Nine's Portfolio
+            <img src="/icon.png" alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -83,7 +86,9 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -104,17 +109,26 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            Nine's Portfolio
+            <img src="/icon.png" alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <BrowserRouter>
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block', fontSize: '1.4rem'}}
+                  component={Link}
+                  to={`/${page.toLowerCase()}`}
+                >
+                  {page}
+                </Button>
+                <Routes>
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/Skill" element={<Skill />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </BrowserRouter>
             ))}
           </Box>
 
@@ -135,9 +149,11 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseUserMenu}>
+                  <Typography variant="h6">
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
