@@ -9,7 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import styled from 'styled-components';
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Profile from './Profile';
 import Contact from './Contact';
@@ -109,7 +108,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            <img src="/icon.png" alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
+            <img src={`${process.env.PUBLIC_URL}/icon.png`} alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
