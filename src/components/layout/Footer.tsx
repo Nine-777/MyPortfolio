@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 
-const Title = () => {
+const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
@@ -15,12 +15,9 @@ const Title = () => {
   const xlPc = useMediaQuery(theme.breakpoints.up('xl'));
 
   return (
-    <>
-      <Typography variant="h1" component="h1" sx={{ fontFamily: 'monospace', fontWeight: 700, fontSize: isMobile ? '1.8rem' : isTablet ? '2.2rem' : isPc ? '4rem' : lgPc ? '5rem': '5rem', letterSpacing: '.3rem', color: '#DEB887' }}>
-        Nine's Portfolio
-      </Typography>
-    </>
+    <Box sx={{ display: 'flex', backgroundColor: '#333333', height: '50px' }}>
+    </Box>
   );
 };
 
-export default Title;
+export default Footer;

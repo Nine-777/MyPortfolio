@@ -110,7 +110,7 @@ const Header = () => {
           >
             <img src={`${process.env.PUBLIC_URL}/icon.png`} alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {pages.map((page) => (
               <BrowserRouter>
                 <Button
@@ -133,7 +133,6 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Menu
-              sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
