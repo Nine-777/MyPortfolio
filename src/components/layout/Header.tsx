@@ -40,7 +40,7 @@ const Header = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -54,49 +54,56 @@ const Header = () => {
             <img src={`${process.env.PUBLIC_URL}/icon.png`} alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography>
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <BrowserRouter>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu} component={Link} to={`/${page.toLowerCase()}`}>
+                    <Typography>
+                      {page}
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <Routes>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/Skill" element={<Skill />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </BrowserRouter>
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -111,24 +118,24 @@ const Header = () => {
             <img src={`${process.env.PUBLIC_URL}/icon.png`} alt="icon" style={{ height: '50px', marginRight: '10px', borderRadius: '5px' }} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            {pages.map((page) => (
-              <BrowserRouter>
+            <BrowserRouter>
+              {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block', fontSize: '1.4rem'}}
+                  sx={{ my: 2, color: 'white', display: 'block', fontSize: '1.6rem', marginRight: '30px', letterSpacing: '0.4rem'}}
                   component={Link}
                   to={`/${page.toLowerCase()}`}
                 >
                   {page}
                 </Button>
-                <Routes>
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/Skill" element={<Skill />} />
-                  <Route path="/contact" element={<Contact />} />
-                </Routes>
-              </BrowserRouter>
-            ))}
+              ))}
+              <Routes>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/Skill" element={<Skill />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </BrowserRouter>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -147,13 +154,20 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseUserMenu}>
-                  <Typography variant="h6">
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
+              <BrowserRouter>
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseUserMenu}>
+                    <Typography variant="h6">
+                      {page}
+                    </Typography>
+                  </MenuItem>
+                ))}
+                <Routes>
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/Skill" element={<Skill />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </BrowserRouter>
             </Menu>
           </Box>
         </Toolbar>
