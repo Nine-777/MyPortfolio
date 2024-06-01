@@ -15,7 +15,7 @@ const Footer = () => {
   const xlPc = useMediaQuery(theme.breakpoints.up('xl'));
 
   return (
-    <Box sx={{ display: 'flex', backgroundColor: '#333333', height: '50px' }}>
+    <Box sx={{ display: 'flex', backgroundColor: '#333333', minHeight: '50px' }}>
     </Box>
   );
 };

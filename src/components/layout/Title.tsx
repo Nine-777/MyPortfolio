@@ -12,7 +12,7 @@ const Title = () => {
 
   return (
     <>
-      <Typography variant="h1" component="h1" sx={{ fontFamily: 'monospace', fontWeight: 700, letterSpacing: '0.4rem', fontSize: isMobile ? '1.8rem' : isTablet ? '2.2rem' : isPc ? '4rem' : lgPc ? '5rem': '5rem', color: '#DEB887' }}>
+      <Typography variant="h1" component="h1" sx={{ fontWeight: 700, letterSpacing: '0.4rem', fontSize: isMobile ? '1.8rem' : isTablet ? '2.2rem' : isPc ? '4rem' : lgPc ? '5rem': '5rem', color: '#DEB887' }}>
         Nine's Portfolio
       </Typography>
     </>
