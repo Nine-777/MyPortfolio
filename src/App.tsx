@@ -34,7 +34,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
+      <BrowserRouter basename="/MyPortfolio">
         <Body />
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
           <Header />
