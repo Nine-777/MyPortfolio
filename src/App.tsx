@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/layout/Header';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Box, Container } from '@mui/material';
+import { Box, CircularProgress, Container } from '@mui/material';
 import Footer from './components/layout/Footer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Profile from './components/layout/Profile';
@@ -31,6 +31,24 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress color="inherit" />
+      </Box>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -38,7 +56,7 @@ const App = () => {
         <Body />
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
           <Header />
-          <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flexGrow: 1 }}>
+          <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', flexGrow: 1, maxWidth: 'none' }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
