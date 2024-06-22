@@ -1,8 +1,10 @@
 ## MyPortfolio
 https://nine-777.github.io/MyPortfolio/
 
-## Technologies
+## Programming Languages
 - TypeScript
+## Frameworks
 - React
-- Github Pages
+## Infra
 - Docker
+- Github Pages
